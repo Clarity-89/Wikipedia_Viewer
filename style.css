@@ -1,0 +1,11 @@
+.container {
+    min-height: 500px;
+
+}
+
+#searchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40%;
+}
