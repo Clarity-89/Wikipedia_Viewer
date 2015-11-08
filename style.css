@@ -1,5 +1,20 @@
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 120% 0;
+    }
+}
+
 .container {
     min-height: 500px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/foundation/thumb/7/70/Wikipedia-puzzleglobe-V2.svg/200px-Wikipedia-puzzleglobe-V2.svg.png');
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /*animation: animatedBackground 4s linear infinite;*/
 
 }
 
@@ -9,3 +24,4 @@
     align-items: center;
     margin-top: 40%;
 }
+
