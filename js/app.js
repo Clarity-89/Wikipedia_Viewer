@@ -6,10 +6,17 @@ var app = {};
 
 app.Result = Backbone.Model.extend({});
 
-var Results = Backbone.PageableCollection.extend({
-    model: this.Result,
+app.Results = Backbone.PageableCollection.extend({
+    model: app.Result,
 
     mode: "client",
+
+    //Override default sync method to allow jsonp data
+    sync: function (method, model, options) {
+        options.timeout = 10000;
+        options.dataType = "jsonp";
+        return Backbone.sync(method, model, options);
+    },
 
     // Override default pagination states
     state: {
@@ -35,7 +42,7 @@ var Results = Backbone.PageableCollection.extend({
 
 });
 
-app.results = new Results();
+app.results = new app.Results();
 
 var paginator = new Backgrid.Extension.Paginator({
     collection: app.results
@@ -71,6 +78,8 @@ app.ResultsView = Backbone.View.extend({
 
 
 $(function () {
+
     new app.ResultsView();
 
 });
+
