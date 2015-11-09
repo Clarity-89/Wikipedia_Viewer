@@ -47,15 +47,13 @@
 <script id="searchResults" type="text/x-handlebars-template">
     <h2 class="title">Search results</h2>
     {{#if []}}
-
     <ul>{{#each []}}
         <li class="hit list-group-item">
-            {{this.title}}
+            {{this.title}} <br>
             {{this.snippet}}
         </li>
         {{/each}}
     </ul>
-
     {{else}}
     <p id="no-results">No results for your search</p>
     {{/if}}

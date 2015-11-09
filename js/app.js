@@ -10,8 +10,8 @@ app.Result = Backbone.Model.extend({
         if (res) {
 
             return {
-                title: res.title.replace(/<\/?[^>]+>/gi, ''),
-                snippet: res.snippet
+                title: res.title,
+                snippet: res.snippet.replace(/<\/?[^>]+>/gi, '')
             };
         }
     }
@@ -31,7 +31,7 @@ app.Results = Backbone.PageableCollection.extend({
 
     // Override default pagination states
     state: {
-        pageSize: 7 //Show 7 results per page
+        pageSize: 10 //Show 10 results per page
     },
 
     data: {
@@ -50,7 +50,7 @@ app.Results = Backbone.PageableCollection.extend({
     },
 
     parse: function (res) {
-        console.log('result', res.query.search);
+        console.log('result', res.query.search[0].snippet);
         return res.query.search;
     }
 
@@ -95,7 +95,7 @@ app.ResultsView = Backbone.View.extend({
             console.log('search clicked');
             app.results.data.srsearch = this.$input.val().trim();
             app.results.fetch();
-            $.()
+            $('#searchForm').css({'transform': "translateY(-300px)"});
         }
     }
 });

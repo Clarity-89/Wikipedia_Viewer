@@ -1,39 +1,19 @@
-@keyframes animatedBackground {
-    from {
-        background-position: 100% 0;
-    }
-    to {
-        background-position: 100% 100%;
-    }
-}
 
 .container {
-    min-height: 500px;
+
     background-image: url('https://upload.wikimedia.org/wikipedia/foundation/thumb/7/70/Wikipedia-puzzleglobe-V2.svg/200px-Wikipedia-puzzleglobe-V2.svg.png');
-
-    background-position: center;
-    background-repeat: no-repeat;
-
-    /*animation: animatedBackground 4s linear infinite;*/
-
+    background: center no-repeat;
 }
 
 #searchForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40%;
-}
-
-#searchForm {
-    /*position: absolute;
-    left: 920px;
-    top: 430px;*/
-
+    margin-top: 30%;
+    text-align: center;
     -moz-transition: transform 1s;
     -webkit-transition: transform 1s;
     -ms-transition: transform 1s;
     -o-transition: transform 1s;
-    transition: transform .5s;
+    transition: transform 1s;
 }
+
+
 
