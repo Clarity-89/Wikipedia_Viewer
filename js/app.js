@@ -13,7 +13,7 @@ app.Results = Backbone.PageableCollection.extend({
 
     //Override default sync method to allow jsonp data
     sync: function (method, model, options) {
-        options.timeout = 10000;
+        //options.timeout = 10000;
         options.dataType = "jsonp";
         return Backbone.sync(method, model, options);
     },
@@ -24,15 +24,18 @@ app.Results = Backbone.PageableCollection.extend({
     },
 
     data: {
-        "appId": "13957b27",
-        "appKey": "634647fd3fadbe686dbaacdbea287beb",
-        "fields": "item_name,nf_calories,nf_serving_weight_grams,nf_serving_size_unit,nf_serving_size_qty",
-        results: '0:50'
+        "list": "search",
+        "format": "json",
+        "srsearch": "india",
+        "srwhat": "text",
+        "srinfo": "totalhits",
+        "srprop": "snippet",
+        "srlimit": "10"
     },
 
     //Create a url for AJAX request with a dynamic query from the search form
     url: function () {
-        return "https://en.wikipedia.org/w/api.php?action=query&titles=India&prop=revisions&rvprop=content&format=json"; //+ this.query + '?' + $.param(this.data);
+       return "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data);
     },
 
     parse: function (res) {
