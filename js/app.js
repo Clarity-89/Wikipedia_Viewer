@@ -26,20 +26,20 @@ app.Results = Backbone.PageableCollection.extend({
     data: {
         "list": "search",
         "format": "json",
-        "srsearch": "india",
+        "srsearch": null,
         "srwhat": "text",
         "srinfo": "totalhits",
         "srprop": "snippet",
-        "srlimit": "10"
+        "srlimit": "50"
     },
 
     //Create a url for AJAX request with a dynamic query from the search form
     url: function () {
-       return "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data);
+        return "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data);
     },
 
     parse: function (res) {
-        console.log('result', res)
+        console.log('result', res);
         return res;
     }
 
@@ -71,12 +71,13 @@ app.ResultsView = Backbone.View.extend({
     },
 
     search: function (event) {
-        event.preventDefault();
-        console.log('search clicked');
-        app.results.fetch();
+        if (this.$input.val()) {
+            event.preventDefault();
+            console.log('search clicked');
+            app.results.data.srsearch = this.$input.val().trim();
+            app.results.fetch();
+        }
     }
-
-
 });
 
 
