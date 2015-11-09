@@ -1,9 +1,9 @@
 @keyframes animatedBackground {
     from {
-        background-position: 0 0;
+        background-position: 100% 0;
     }
     to {
-        background-position: 120% 0;
+        background-position: 100% 100%;
     }
 }
 
@@ -23,5 +23,17 @@
     justify-content: center;
     align-items: center;
     margin-top: 40%;
+}
+
+#searchForm {
+    /*position: absolute;
+    left: 920px;
+    top: 430px;*/
+
+    -moz-transition: transform 1s;
+    -webkit-transition: transform 1s;
+    -ms-transition: transform 1s;
+    -o-transition: transform 1s;
+    transition: transform .5s;
 }
 
