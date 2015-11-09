@@ -4,7 +4,18 @@
 
 var app = {};
 
-app.Result = Backbone.Model.extend({});
+app.Result = Backbone.Model.extend({
+
+    parse: function (res) {
+        if (res) {
+
+            return {
+                title: res.title.replace(/<\/?[^>]+>/gi, ''),
+                snippet: res.snippet
+            };
+        }
+    }
+});
 
 app.Results = Backbone.PageableCollection.extend({
     model: app.Result,
@@ -39,8 +50,8 @@ app.Results = Backbone.PageableCollection.extend({
     },
 
     parse: function (res) {
-        console.log('result', res);
-        return res;
+        console.log('result', res.query.search);
+        return res.query.search;
     }
 
 });
@@ -70,12 +81,21 @@ app.ResultsView = Backbone.View.extend({
         this.listenTo(this.collection, 'all', this.render);
     },
 
+    render: function () {
+        this.$hits.html(this.template(this.collection.toJSON()));
+        if (this.collection.length > 0) {
+            $("#paginator").append(paginator.render().$el);
+        }
+        return this;
+    },
+
     search: function (event) {
         if (this.$input.val()) {
             event.preventDefault();
             console.log('search clicked');
             app.results.data.srsearch = this.$input.val().trim();
             app.results.fetch();
+            $.()
         }
     }
 });

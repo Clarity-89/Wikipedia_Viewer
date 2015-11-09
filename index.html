@@ -16,8 +16,12 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <!-- CSS for Backgrid.js and its paginator extension -->
+    <link rel="stylesheet" href="css/backgrid.css">
+    <link rel="stylesheet" href="css/backgrid-paginator.css">
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
@@ -36,6 +40,7 @@
         </div>
     </form>
     <div id="hits"></div>
+    <div id="paginator"></div>
 
 </div>
 
@@ -44,12 +49,9 @@
     {{#if []}}
 
     <ul>{{#each []}}
-        <li class="hit list-group-item" data-id="{{id}}"> {{this.name}}
-            <br>
-            Size: {{this.size}}
-            <i id="addToList" class="fa fa-plus fa-2x"></i>
-            <br>
-            Calories: {{this.calories}}
+        <li class="hit list-group-item">
+            {{this.title}}
+            {{this.snippet}}
         </li>
         {{/each}}
     </ul>
@@ -57,8 +59,8 @@
     {{else}}
     <p id="no-results">No results for your search</p>
     {{/if}}
-
 </script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
