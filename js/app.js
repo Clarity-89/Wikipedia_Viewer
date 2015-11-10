@@ -78,6 +78,7 @@ app.ResultsView = Backbone.View.extend({
 
         this.$input = this.$('#search');
         this.$hits = this.$('#hits');
+        this.$seachForm = $("#searchForm");
         this.listenTo(this.collection, 'all', this.render);
     },
 
@@ -94,8 +95,13 @@ app.ResultsView = Backbone.View.extend({
             event.preventDefault();
             console.log('search clicked');
             app.results.data.srsearch = this.$input.val().trim();
-            app.results.fetch();
-            $('#searchForm').css({'transform': "translateY(-300px)"});
+            this.$seachForm.css({'transform': "translateY(-300px)"})
+                //make sure results are display after the transition ended
+                .one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function () {
+                    app.results.fetch();
+                });
+
+
         }
     }
 });
