@@ -42,14 +42,15 @@
             </div>
         </form>
     </div>
-    <div id="hits"></div>
+    <div id="spinner"><img src="http://www.smuggs.com/pages/resort_welcome/images/universal/page/gallery-loading.gif"></div>
+    <div id="hits"><p id="no-hits">No results for your query.</p></div>
     <div id="paginator"></div>
 
 </div>
 
 <script id="searchResults" type="text/x-handlebars-template">
     <!--<h2 class="title">Search results</h2>-->
-    {{#if []}}
+
     <div class="list-group">{{#each []}}
         <a class="hit list-group-item" target="_blank" href="{{this.url}}">
             <p>{{this.title}}</p>
@@ -57,9 +58,7 @@
         </a>
         {{/each}}
     </div>
-    {{else}}
-    <img src="http://www.smuggs.com/pages/resort_welcome/images/universal/page/gallery-loading.gif" id="spinner">
-    {{/if}}
+
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

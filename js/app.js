@@ -48,22 +48,22 @@ app.Results = Backbone.PageableCollection.extend({
 
     //Create a url for AJAX request with a dynamic query from the search form
     url: function () {
-        //console.log('q', "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data));
+
         return 'https://en.wikipedia.org/w/api.php?action=query&&exintro&explaintext&' + $.param(this.data);
-        // "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data);
     },
 
     parse: function (res) {
-        var obj = res.query.pages;
-        var parsed = [];
-        for (var prop in obj) {
-            parsed.push({title: obj[prop].title, extract: obj[prop].extract});
+
+        if (res.query) {
+            var obj = res.query.pages;
+            var parsed = [];
+            for (var prop in obj) {
+                parsed.push({title: obj[prop].title, extract: obj[prop].extract});
+            }
+            console.log(parsed);
+            return parsed;
         }
-        console.log(parsed);
-        return parsed;
-
     }
-
 });
 
 app.results = new app.Results();
@@ -93,10 +93,16 @@ app.ResultsView = Backbone.View.extend({
     },
 
     render: function () {
-        this.$hits.html(this.template(this.collection.toJSON()));
-        if (this.collection.length > 0) {
+        $('#spinner').css('display', 'none');
+
+        if (this.collection.length > 1) {
+            this.$hits.html(this.template(this.collection.toJSON()));
             $("#paginator").append(paginator.render().$el);
+        } else {
+            $('#no-hits').css('display', 'block');
         }
+        TweenLite.fromTo(this.$hits, 2, {opacity: '0'}, {opacity: '1'});
+
         return this;
     },
 
@@ -105,6 +111,7 @@ app.ResultsView = Backbone.View.extend({
             event.preventDefault();
             console.log('search clicked');
             app.results.data.gsrsearch = this.$input.val().trim();
+            $('#spinner').css('display', 'block');
             TweenLite.to($('#wrapper'), 0.7, {
                 height: '50px',
                 //make sure results are displayed after the transition ended
