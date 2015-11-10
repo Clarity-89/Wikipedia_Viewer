@@ -1,13 +1,24 @@
 
-.container {
-    /* background: url('https://upload.wikimedia.org/wikipedia/foundation/thumb/7/70/Wikipedia-puzzleglobe-V2.svg/200px-Wikipedia-puzzleglobe-V2.svg.png') center no-repeat;*/
+html, body {
+    height: 100%;
+    overflow: auto;
+}
+
+body {
+    background-color: #d1d1d1;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    text-align: center;
 }
 
 #searchForm {
     position: absolute;
-    top: 30%;
+    top: 60%;
     left: 50%;
     margin-left: -150px;
+    height: 100%;
     -moz-transition: transform 1s;
     -webkit-transition: transform 1s;
     -ms-transition: transform 1s;
@@ -15,3 +26,21 @@
     transition: transform 1s;
 }
 
+#wrapper {
+    position: relative;
+    height: 400px;
+}
+
+#spinner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 9999;
+}
+
+#hits {
+    margin-top: 6%;
+}

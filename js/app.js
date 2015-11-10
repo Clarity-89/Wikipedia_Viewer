@@ -32,7 +32,7 @@ app.Results = Backbone.PageableCollection.extend({
 
     // Override default pagination states
     state: {
-        pageSize: 10 //Show 10 results per page
+        pageSize: 7 //Show 7 results per page
     },
 
     data: {
@@ -88,7 +88,7 @@ app.ResultsView = Backbone.View.extend({
 
         this.$input = this.$('#search');
         this.$hits = this.$('#hits');
-        this.$seachForm = $("#searchForm");
+        this.$searchForm = $("#searchForm");
         this.listenTo(this.collection, 'all', this.render);
     },
 
@@ -105,17 +105,16 @@ app.ResultsView = Backbone.View.extend({
             event.preventDefault();
             console.log('search clicked');
             app.results.data.gsrsearch = this.$input.val().trim();
-            this.$seachForm.css({'transform': "translateY(-300px)"})
-                //make sure results are display after the transition ended
-                .one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function () {
+            TweenLite.to($('#wrapper'), 0.7, {
+                height: '50px',
+                //make sure results are displayed after the transition ended
+                onComplete: function () {
                     app.results.fetch();
-                });
-
-
+                }
+            });
         }
     }
 });
-
 
 $(function () {
 

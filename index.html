@@ -26,36 +26,39 @@
 </head>
 <body>
 <div class="container">
+    <h1>Wikipedia Viewer</h1>
 
-    <!-- Search form -->
-    <form autocomplete="off" class="navbar-form" role="search" id="searchForm">
-        <div class="input-group add-on">
-            <label class="sr-only" for="search">Search</label>
-            <input type="text" class="form-control" id="search" placeholder="Search...">
+    <div id="wrapper">
+        <!-- Search form -->
+        <form autocomplete="off" class="navbar-form" role="search" id="searchForm">
+            <div class="input-group add-on">
+                <label class="sr-only" for="search">Search</label>
+                <input type="text" class="form-control" id="search" placeholder="Search...">
 
-            <div class="input-group-btn">
-                <button class="btn btn-default" id="searchButton" type="submit"><i
-                        class="glyphicon glyphicon-search"></i></button>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" id="searchButton" type="submit"><i
+                            class="glyphicon glyphicon-search"></i></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
     <div id="hits"></div>
     <div id="paginator"></div>
 
 </div>
 
 <script id="searchResults" type="text/x-handlebars-template">
-    <h2 class="title">Search results</h2>
+    <!--<h2 class="title">Search results</h2>-->
     {{#if []}}
     <div class="list-group">{{#each []}}
         <a class="hit list-group-item" target="_blank" href="{{this.url}}">
-          {{this.title}} <br>
+            <p>{{this.title}}</p>
             {{this.snippet}}
         </a>
         {{/each}}
     </div>
     {{else}}
-    <p id="no-results">No results for your search</p>
+    <img src="http://www.smuggs.com/pages/resort_welcome/images/universal/page/gallery-loading.gif" id="spinner">
     {{/if}}
 </script>
 
@@ -68,6 +71,12 @@
 <script src="js/libs/backgrid.js"></script>
 <script src="js/libs/backgrid-paginator.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
+
+<!--TweenLite and plugins-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/easing/EasePack.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenLite.min.js"></script>
+
 <!-- Custom JS -->
 <script src="js/app.js"></script>
 </body>
