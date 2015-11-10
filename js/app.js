@@ -11,7 +11,8 @@ app.Result = Backbone.Model.extend({
 
             return {
                 title: res.title,
-                snippet: res.snippet.replace(/<\/?[^>]+>/gi, '')
+                snippet: res.extract,
+                url: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(res.title)
             };
         }
     }
@@ -35,23 +36,32 @@ app.Results = Backbone.PageableCollection.extend({
     },
 
     data: {
-        "list": "search",
+        "generator": "search",
         "format": "json",
-        "srsearch": null,
-        "srwhat": "text",
-        "srinfo": "totalhits",
-        "srprop": "snippet",
-        "srlimit": "50"
+        "gsrsearch": null,
+        "gsrnamespace": "0",
+        "gsrlimit": "20",
+        "prop": "extracts",
+        "exsentences": "2",
+        "exlimit": "max"
     },
 
     //Create a url for AJAX request with a dynamic query from the search form
     url: function () {
-        return "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data);
+        //console.log('q', "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data));
+        return 'https://en.wikipedia.org/w/api.php?action=query&&exintro&explaintext&' + $.param(this.data);
+        // "https://en.wikipedia.org/w/api.php?action=query&" + $.param(this.data);
     },
 
     parse: function (res) {
-        console.log('result', res.query.search[0].snippet);
-        return res.query.search;
+        var obj = res.query.pages;
+        var parsed = [];
+        for (var prop in obj) {
+            parsed.push({title: obj[prop].title, extract: obj[prop].extract});
+        }
+        console.log(parsed);
+        return parsed;
+
     }
 
 });
@@ -94,7 +104,7 @@ app.ResultsView = Backbone.View.extend({
         if (this.$input.val()) {
             event.preventDefault();
             console.log('search clicked');
-            app.results.data.srsearch = this.$input.val().trim();
+            app.results.data.gsrsearch = this.$input.val().trim();
             this.$seachForm.css({'transform': "translateY(-300px)"})
                 //make sure results are display after the transition ended
                 .one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function () {

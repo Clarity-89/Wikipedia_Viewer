@@ -1,7 +1,6 @@
 
 .container {
-   /* background: url('https://upload.wikimedia.org/wikipedia/foundation/thumb/7/70/Wikipedia-puzzleglobe-V2.svg/200px-Wikipedia-puzzleglobe-V2.svg.png') center no-repeat;*/
-    background-color: red;
+    /* background: url('https://upload.wikimedia.org/wikipedia/foundation/thumb/7/70/Wikipedia-puzzleglobe-V2.svg/200px-Wikipedia-puzzleglobe-V2.svg.png') center no-repeat;*/
 }
 
 #searchForm {
@@ -15,6 +14,4 @@
     -o-transition: transform 1s;
     transition: transform 1s;
 }
-
-
 
