@@ -88,20 +88,21 @@ app.ResultsView = Backbone.View.extend({
 
         this.$input = this.$('#search');
         this.$hits = this.$('#hits');
-        this.$searchForm = $("#searchForm");
+        this.$spinner = $("#spinner");
         this.listenTo(this.collection, 'reset', this.render);
     },
 
     render: function () {
-        $('#spinner').css('display', 'none');
-
-        if (this.collection.length > 1) {
+        this.$spinner.show();
+        //console.log('model', this.collection.models[0].get('title'))
+        if (this.collection.models[0].get('title')) {
             this.$hits.html(this.template(this.collection.toJSON()));
             $("#paginator").append(paginator.render().$el);
         } else {
-            $('#no-hits').css('display', 'block');
+            this.$spinner.hide();
+            $('#no-results').css('display', 'block');
         }
-        TweenLite.fromTo(this.$hits, 2, {opacity: '0'}, {opacity: '1'});
+        TweenLite.fromTo(this.$hits, 1, {opacity: '0'}, {opacity: '1'});
 
         return this;
     },

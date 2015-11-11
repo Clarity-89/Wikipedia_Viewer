@@ -33,12 +33,9 @@ h1 {
 
 #spinner {
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 9999;
+    top: 30%;
+    left: 50%;
+    margin-left: -150px;
     display: none;
 }
 
@@ -46,7 +43,7 @@ h1 {
     margin-top: 6%;
 }
 
-#no-hits {
+#no-results {
     text-align: center;
     font-size: 24px;
     display: none;
