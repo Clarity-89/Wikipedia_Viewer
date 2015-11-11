@@ -40,7 +40,7 @@ h1 {
 }
 
 #hits {
-    margin-top: 6%;
+    margin-top: 50px;
 }
 
 #no-results {
@@ -52,6 +52,7 @@ h1 {
 .hit {
     margin: 1%;
 }
+
 .hit:hover {
     transform: scale(1.02);
 }
