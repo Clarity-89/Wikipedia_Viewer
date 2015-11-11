@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-    background: url("http://download-wallpapers.net/wallpapers/nature-wallpapers-minimalist-wallpaper-desktop-backgrounds-wallpapers-aiddblgig-wallpaper-42230.jpg") center no-repeat;
+    background: url("../img/clouds.jpg") center no-repeat;
     background-size: cover;
     font-family: 'Lato', sans-serif;
 }
