@@ -32,7 +32,7 @@ app.Results = Backbone.PageableCollection.extend({
 
     // Override default pagination states
     state: {
-        pageSize: 7 //Show 7 results per page
+        pageSize: 6 //Show 6 results per page
     },
 
     data: {
@@ -93,12 +93,14 @@ app.ResultsView = Backbone.View.extend({
     },
 
     render: function () {
+        this.$hits.hide();
         this.$spinner.show();
         //console.log('model', this.collection.models[0].get('title'))
         if (this.collection.models[0].get('title')) {
             this.$hits.html(this.template(this.collection.toJSON()));
             $("#paginator").append(paginator.render().$el);
             this.$spinner.hide();
+            this.$hits.show();
         } else {
             this.$spinner.hide();
             $('#no-results').css('display', 'block');

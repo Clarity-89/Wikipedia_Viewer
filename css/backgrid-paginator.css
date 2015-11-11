@@ -36,6 +36,7 @@
   padding: 0;
   line-height: 30px;
   text-decoration: none;
+  color: black;
 }
 
 .backgrid-paginator ul > li > a:hover,

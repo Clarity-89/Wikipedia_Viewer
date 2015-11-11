@@ -6,6 +6,7 @@ html, body {
 
 body {
     background: url("http://download-wallpapers.net/wallpapers/nature-wallpapers-minimalist-wallpaper-desktop-backgrounds-wallpapers-aiddblgig-wallpaper-42230.jpg") center no-repeat;
+    background-size: cover;
     font-family: 'Lato', sans-serif;
 }
 
@@ -55,4 +56,9 @@ h1 {
 
 .hit:hover {
     transform: scale(1.02);
+}
+
+#paginator {
+    text-align: center;
+    color: black;
 }
