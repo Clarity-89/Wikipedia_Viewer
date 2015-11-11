@@ -48,3 +48,10 @@ h1 {
     font-size: 24px;
     display: none;
 }
+
+.hit {
+    margin: 1%;
+}
+.hit:hover {
+    transform: scale(1.02);
+}
