@@ -95,7 +95,7 @@ app.ResultsView = Backbone.View.extend({
     render: function () {
         this.$hits.hide();
         this.$spinner.show();
-        //console.log('model', this.collection.models[0].get('title'))
+
         if (this.collection.models[0].get('title')) {
             this.$hits.html(this.template(this.collection.toJSON()));
             $("#paginator").append(paginator.render().$el);
