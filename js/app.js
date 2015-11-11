@@ -115,7 +115,7 @@ app.ResultsView = Backbone.View.extend({
             app.results.data.gsrsearch = this.$input.val().trim();
             $('#spinner').css('display', 'block');
             TweenLite.to($('#wrapper'), 0.7, {
-                height: '50px',
+                height: '40px',
                 //make sure results are displayed after the transition ended
                 onComplete: function () {
                     app.results.fetch();
