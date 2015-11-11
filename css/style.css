@@ -80,5 +80,6 @@ h1 {
 @media only screen and (max-device-width: 780px) {
     .footer {
         position: relative;
+        margin-top: 5%;
     }
 }
