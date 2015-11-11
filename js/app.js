@@ -89,7 +89,7 @@ app.ResultsView = Backbone.View.extend({
         this.$input = this.$('#search');
         this.$hits = this.$('#hits');
         this.$searchForm = $("#searchForm");
-        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.collection, 'reset', this.render);
     },
 
     render: function () {
