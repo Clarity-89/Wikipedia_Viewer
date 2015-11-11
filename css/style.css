@@ -66,3 +66,19 @@ h1 {
     text-align: center;
     color: black;
 }
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (max-device-width: 780px) {
+    .footer {
+        position: relative;
+    }
+}
