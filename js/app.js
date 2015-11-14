@@ -25,7 +25,6 @@ app.Results = Backbone.PageableCollection.extend({
 
     //Override default sync method to allow jsonp data
     sync: function (method, model, options) {
-        //options.timeout = 10000;
         options.dataType = "jsonp";
         return Backbone.sync(method, model, options);
     },
@@ -60,7 +59,6 @@ app.Results = Backbone.PageableCollection.extend({
             for (var prop in obj) {
                 parsed.push({title: obj[prop].title, extract: obj[prop].extract});
             }
-            console.log(parsed);
             return parsed;
         }
     }
@@ -113,7 +111,6 @@ app.ResultsView = Backbone.View.extend({
     search: function (event) {
         if (this.$input.val()) {
             event.preventDefault();
-            console.log('search clicked');
             app.results.data.gsrsearch = this.$input.val().trim();
             $('#spinner').css('display', 'block');
             TweenLite.to($('#wrapper'), 0.7, {
